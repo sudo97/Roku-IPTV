@@ -16,8 +16,6 @@ sub getContent()
     
     for i = 1 to lines.Count()-1
         arr.Push({name: regexEXT.Replace(lines[i], "\1"), url: lines[i+1]})
-        print regexEXT.Replace(lines[i], "\1")
-        print lines[i+1]
         i = i + 1
     end for
     
