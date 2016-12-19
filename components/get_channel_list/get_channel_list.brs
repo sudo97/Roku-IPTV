@@ -12,13 +12,6 @@ sub getContent()
     
     regexEXT = CreateObject("roRegex", "#EXTINF:(.*)", "")
     
-    for each l in lines
-        if(regexEXT.isMatch(l))
-            l = regexEXT.Replace(l, "\1")
-            print l
-        end if
-    end for
-    
     arr = []
     
     for i = 1 to lines.Count()-1
