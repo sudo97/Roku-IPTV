@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
+
+<component name="MainScene" extends="Scene" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://rokudev.roku.com/rokudev/schema/RokuSceneGraph.xsd">
+	<!-- importing main handler -->
+    <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
+    <children>
+    <LabelList
+    	id="list"
+    	/>
+    <Video
+    id="Video"
+    translation = "[900, 100]"
+    width = "960"
+    height= "540"/>
+    <get_channel_list
+    	id="get_channel_list"
+    	control="RUN"/>
+    </children>
+</component>
