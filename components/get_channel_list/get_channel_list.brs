@@ -4,7 +4,7 @@ end sub
 'http://ukr-iptv.com/list.m3u
 sub getContent()
     searchRequest = CreateObject("roUrlTransfer")
-    searchRequest.setURL("http://ukr-iptv.com/list.m3u")
+    searchRequest.setURL("http://ukr-iptv.com/list.m3u") 'The link is just example, need to find more m3u's
     text = searchRequest.getToString()
 '    print "recieved text"; text
     
@@ -18,7 +18,9 @@ sub getContent()
             print l
         end if
     end for
+    
     arr = []
+    
     for i = 1 to lines.Count()-1
         arr.Push({name: regexEXT.Replace(lines[i], "\1"), url: lines[i+1]})
         print regexEXT.Replace(lines[i], "\1")
