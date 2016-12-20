@@ -4,7 +4,7 @@ end sub
 'http://ukr-iptv.com/list.m3u
 sub getContent()
     searchRequest = CreateObject("roUrlTransfer")
-    searchRequest.setURL("http://ukr-iptv.com/list.m3u") 'The link is just example, need to find more m3u's
+    searchRequest.setURL(m.top.url) 'The link is just example, need to find more m3u's
     text = searchRequest.getToString()
 '    print "recieved text"; text
     

@@ -16,6 +16,7 @@
     height= "540"/>
     <get_channel_list
     	id="get_channel_list"
+	url="http://ukr-iptv.com/list.m3u"
     	control="RUN"/>
     </children>
 </component>
