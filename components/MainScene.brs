@@ -44,20 +44,14 @@ sub checkState()
 end sub
 
 sub SetContent()
-    content = CreateObject("roSGNode", "ContentNode")
-    for each e in m.get_channel_list.content
-        item = content.CreateChild("ContentNode")
-        item.title = e.name
-    end for
-    m.list.content = content
+    m.list.content = m.get_channel_list.content
     m.list.SetFocus(true)
 end sub
 
 sub setChannel()
-    content = CreateObject("roSGNode", "ContentNode")
-    content.url = m.get_channel_list.content[m.list.itemSelected].url
-    print content.url
-    content.streamFormat = "hls"
-    m.video.content = content
+    con = m.list.content.getChild(m.list.itemSelected)
+    print con.url
+    con.streamFormat = "hls"
+    m.video.content = con
     m.video.control = "play"
 end sub
