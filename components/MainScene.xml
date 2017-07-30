@@ -6,17 +6,23 @@
 	<!-- importing main handler -->
     <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
     <children>
+    <get_feed_url
+    	id="get_feed_url"
+    	control="run"/>
     <LabelList
     	id="list"
+    	translation = "[100, 100]"
     	/>
     <Video
     id="Video"
-    translation = "[900, 100]"
+    translation = "[850, 100]"
     width = "960"
     height= "540"/>
     <get_channel_list
     	id="get_channel_list"
-	url="http://ukr-iptv.com/list.m3u"
-    	control="RUN"/>
+    	control="STOP"/>
+    <save_feed_url
+    	id="save_feed_url"
+    	control="STOP"/>
     </children>
 </component>
