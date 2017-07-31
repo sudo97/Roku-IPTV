@@ -12,11 +12,11 @@ sub getContent()
 xxx = m.global.feedurl
 print "XXX feed is >>>>>>>>>>>> : " xxx
 
-  print "entering getcontent"; text
+  print "entering getcontent";
     m.port = CreateObject ("roMessagePort")
     searchRequest = CreateObject("roUrlTransfer")
     searchRequest.setURL(xxx)
-	
+    
 
     searchRequest.EnableEncodings (True)
     https = "https:"
@@ -26,13 +26,13 @@ print "XXX feed is >>>>>>>>>>>> : " xxx
         searchRequest.InitClientCertificates ()
     Endif
 
-	
-	
+    
+  print "entering get to String"
   text = searchRequest.getToString()
-  print "recieved text"; text
+  print "recieved text";
     
     reLineSplit = CreateObject ("roRegex", "(?>\r\n|[\r\n])", "")
-    reExtinf = CreateObject ("roRegex", "^#EXTINF:\s*(\d+|-1)\s*,\s*(.*)$", "")
+    reExtinf = CreateObject ("roRegex", "(?i)^#EXTINF:\s*(\d+|-1|-0).*,\s*(.*)$", "")
     rePath = CreateObject ("roRegex", "^([^#].*)$", "")
     inExtinf = False
     con = CreateObject("roSGNode", "ContentNode")
@@ -45,6 +45,10 @@ print "XXX feed is >>>>>>>>>>>> : " xxx
                 item = con.CreateChild("ContentNode")
                 item.url = maPath [1]
                 item.title = title
+                
+                print "Title is >";item.title
+                print "URL is >>>";item.url
+
                 inExtinf = False
             Endif
         Endif
