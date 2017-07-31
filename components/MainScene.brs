@@ -64,14 +64,15 @@ sub setChannel()
 '   print "URL FOR STREAM IS >>>>>>>>>  "; con.url
     
 content = createObject("RoSGNode","ContentNode")
-content.streamFormat = "hls"
+content.streamFormat = ""
 content.title = con.title
 content.description = con.description
 print "URL FOR  STREAM IS >>>>>>>>>";con.url
+
 ' content.url = "http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8"
+
  content.url = con.url
- print "http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8"
- print con.url
+ 
  content.HttpSendClientCertificates = true
  content.HttpCertificatesFile = "common:/certs/ca-bundle.crt"
  m.video.EnableCookies()
@@ -96,13 +97,12 @@ PRINT "ENTERING KEYBOARD ************************"
   keyboarddialog.backgroundUri = "pkg:/images/rsgde_dlg_bg_hd.9.png"
   keyboarddialog.title = "Enter .m3u URL"
 
-  keyboarddialog.buttons=["OK","CANCEL"]
+  keyboarddialog.buttons=["OK","Set back to Demo"]
   keyboarddialog.optionsDialog=true
  
 
   m.top.dialog = keyboarddialog
-'  m.top.dialog.text = "https://pastebin.com/raw/vVBSHpNq"
-   m.top.dialog.text = m.global.feedurl
+  m.top.dialog.text = m.global.feedurl
  
  KeyboardDialog.observeField("buttonSelected","onKeyPress")
 ' KeyboardDialog.observeField("buttonSelected","onKeyPressCancel")
@@ -115,23 +115,39 @@ function onKeyPress()
     print "OK"
     url = m.top.dialog.text
     print "THE ENTERED FEEDURL IS"; url
-'    m.global.addFields( {feedurl: url } )
+'    m.global.addFields( {feedurl: url } )  'for understanding/testing
      m.global.feedurl = url
     print "THE NEW GLOBAL FEEDURL IS"; m.global.feedurl
     m.save_feed_url.control = "RUN"
-    
-'    m.top.dialog.visible ="false"
+'   m.top.dialog.visible ="false"
     m.top.unobserveField("buttonSelected")
     m.top.dialog.close = true
     m.get_channel_list.control = "RUN"
-    
     end if
+    
+    
     if m.top.dialog.buttonSelected = 1
-    print "CANCEL"
+    url = m.top.dialog.text
+    print "THE ENTERED FEEDURL IS"; url
+    
+    m.global.feedurl = "https://pastebin.com/raw/v0dE8SdX"   'Load the demo url.  Hardcoded for now.
+    
+    print "THE NEW GLOBAL FEEDURL IS"; m.global.feedurl
+    m.save_feed_url.control = "RUN"
+    m.top.unobserveField("buttonSelected")
+    m.top.dialog.close = true
+    m.get_channel_list.control = "RUN"
+    end if
+    
+    
+    if m.top.dialog.buttonSelected = 2
+    print "Saved for future use"
 '    m.top.dialog.visible ="false"
 '    m.top.unobserveField("buttonSelected")
     m.top.dialog.close = true
     end if
     
 end Function
+
+
 
