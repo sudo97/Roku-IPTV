@@ -1,6 +1,6 @@
  
 # Roku-IPTV
-This is fork of -> The Simplest Application for Roku you can use to watch IPTV
+This is fork of -> The Simplest Application for Roku you can use to watch IPTV.
 
 -------------------
 NOTE:  Be warned. Be tolerant. Looks like a hack job and it is. I am a newbie just learning scenegraph/brightscript with little coding etiquette. 
