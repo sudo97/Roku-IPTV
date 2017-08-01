@@ -1,4 +1,4 @@
-
+ 
 # Roku-IPTV
 This is fork of -> The Simplest Application for Roku you can use to watch IPTV
 
@@ -11,7 +11,7 @@ NOTE:  Be warned. Be tolerant. Looks like a hack job and it is. I am a newbie ju
 7.31.17 Better m3u8 parser code added. Added a set back to demo url button to keyboard
 8.1.17  Stable and somewhat working as is.  Forking this over to a development repo to continue with additional features.
 
-This is the CURRENT stable version from our group project (https://www.facebook.com/groups/rokumania) that is published as a private | non-certified roku channel (http://my.roku.com/m3u)
+This is the CURRENT stable version from our group project (https://www.facebook.com/groups/rokumania) that is published as a private | non-certified roku channel (http://my.roku.com/m3u) for group members to play custom .m3u playlists FREE w/no-ads.
 
 I will be forking this working/somewhat stable version over to a development repo to make some major changes to move forward with multiple playlist slots, etc.
 
