@@ -12,7 +12,7 @@ NOTE:  Be warned. Be tolerant. Looks like a hack job and it is. I am a newbie ju
 <br>
 8.1.17  Stable and somewhat working as is.  Forking this over to a development repo to continue with additional features.
 
-This is the CURRENT stable version from our group project (https://www.facebook.com/groups/rokumania) that is published as a private | non-certified roku channel (http://my.roku.com/m3u) for group members to play custom .m3u playlists FREE w/no-ads.
+This is the CURRENT stable version from our group project (https://www.facebook.com/groups/rokumania) that is published as a private | non-certified roku channel (http://my.roku.com/m3uplayer) for group members to play custom .m3u playlists FREE w/no-ads.
 
 I will branch this working/somewhat stable version over to a development branch to make some major changes to move forward with multiple playlist slots, etc.
 
