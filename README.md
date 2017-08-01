@@ -16,5 +16,4 @@ This is the CURRENT stable version from our group project (https://www.facebook.
 
 I will be forking this working/somewhat stable version over to a development repo to make some major changes to move forward with multiple playlist slots, etc.
 
-Have fun! and please keep it FREE! w/no-ads. 
-
+Have fun! Join the RokuMania group! for future projects.
