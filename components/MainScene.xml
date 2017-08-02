@@ -15,7 +15,7 @@
     	/>
     <Video
     id="Video"
-    translation = "[850, 100]"
+    translation = "[800, 100]"
     width = "960"
     height= "540"/>
     <get_channel_list
