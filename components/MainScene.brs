@@ -4,6 +4,7 @@ sub init()
     
    showdialog()
 '    m.top.SetFocus(true)
+ m.top.backgroundURI = "pkg:/images/rsgde_bg_hd.jpg"
 
     m.save_feed_url = m.top.FindNode("save_feed_url")
  '   m.get_channel_list.ObserveField("content", "SetContent")
@@ -34,6 +35,12 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
             result = true
         else if(key = "left")
             m.list.SetFocus(true)
+            m.video.translation = [800, 100]
+            m.video.width = 960
+            m.video.height = 540
+            result = true
+        else if(key = "back")
+                    m.list.SetFocus(true)
             m.video.translation = [800, 100]
             m.video.width = 960
             m.video.height = 540
