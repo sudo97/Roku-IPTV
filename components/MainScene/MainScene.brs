@@ -22,7 +22,6 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
     
     if(press)'
     
-    print "KEY PRESSED IS >>>> "; key
     
         if(key = "right")
             m.list.SetFocus(false)
@@ -78,7 +77,6 @@ sub setChannel()
     content.title = con.title
     content.description = con.description
 
-    print "URL FOR  STREAM IS >>>>>>>>>";con.url
 
     content.url = con.url
 

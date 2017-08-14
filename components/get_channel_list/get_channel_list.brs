@@ -20,7 +20,6 @@ sub getContent()
 
 
     text = searchRequest.getToString()
-    print "recieved text";
 
     reLineSplit = CreateObject ("roRegex", "(?>\r\n|[\r\n])", "")
     reExtinf = CreateObject ("roRegex", "(?i)^#EXTINF:\s*(\d+|-1|-0).*,\s*(.*)$", "")
