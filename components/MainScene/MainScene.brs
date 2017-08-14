@@ -107,30 +107,23 @@ sub showdialog()
     m.top.dialog = keyboarddialog
     m.top.dialog.text = m.global.feedurl
 
-    KeyboardDialog.observeField("buttonSelected","onKeyPress")  'we observe button ok/cancel, if so goto to onKeyPress sub
+    KeyboardDialog.observeFieldScoped("buttonSelected","onKeyPress")  'we observe button ok/cancel, if so goto to onKeyPress sub
 end sub
 
 
 sub onKeyPress()
-    print " button is"m.top.dialog.buttonSelected
-    print "m.value:::>>"m.top.dialog.text
     if m.top.dialog.buttonSelected = 0
-        print "OK"
         url = m.top.dialog.text
-        print "THE ENTERED FEEDURL IS"; url
-        '    m.global.addFields( {feedurl: url } )  'for understanding/testing
-         m.global.feedurl = url
-        print "THE NEW GLOBAL FEEDURL IS"; m.global.feedurl
+        m.global.feedurl = url
         m.save_feed_url.control = "RUN"
-        '   m.top.dialog.visible ="false"
-        m.top.unobserveField("buttonSelected")
         m.top.dialog.close = true
         m.top.backgroundURI = "pkg:/images/background-controls.jpg"
         m.get_channel_list.control = "RUN"
     else if m.top.dialog.buttonSelected = 1
         m.top.dialog.text = "https://pastebin.com/raw/v0dE8SdX"
     else if m.top.dialog.buttonSelected = 2
-        print "Saved for future use"
+        m.global.feedurl = m.top.dialog.text
+        m.save_feed_url.control = "RUN"
         '    m.top.dialog.visible ="false"
         '    m.top.unobserveField("buttonSelected")
     end if

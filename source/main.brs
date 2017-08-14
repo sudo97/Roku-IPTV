@@ -2,10 +2,18 @@
 
 sub Main()
 
+    reg = CreateObject("roRegistrySection", "profile")
+    if reg.Exists("primaryfeed") then
+        url = reg.Read("primaryfeed")
+    else
+        url = "https://pastebin.com/raw/v0dE8SdX"
+    end if
+
     screen = CreateObject("roSGScreen")
     m.port = CreateObject("roMessagePort")
     screen.setMessagePort(m.port)
     m.global = screen.getGlobalNode()
+    m.global.addFields({feedurl: url})
     scene = screen.CreateScene("MainScene")
     screen.show()
 

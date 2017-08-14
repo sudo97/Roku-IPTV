@@ -5,11 +5,6 @@
 <component name="MainScene" extends="Scene" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://rokudev.roku.com/rokudev/schema/RokuSceneGraph.xsd">
 <script type="text/brightscript" uri="pkg:/components/MainScene/MainScene.brs"/>
 <children>
-    
-    <get_feed_url
-    	id="get_feed_url"
-    	control="run"/>
-    	
     <LabelList
     	id="list"
     	translation = "[100, 100]"
