@@ -67,18 +67,10 @@ sub SetContent()
 end sub
 
 sub setChannel()
-
-    con = m.list.content.getChild(m.list.itemSelected)
-'   print "Title of STream is >>>>>>>>  "; con.title
-'   print "URL FOR STREAM IS >>>>>>>>>  "; con.url
+    content = m.list.content.getChild(m.list.itemSelected)
     
-    content = createObject("RoSGNode","ContentNode")
+    'Probably would be good to make content = content.clone(true) but for now it works like this
     content.streamFormat = "hls"
-    content.title = con.title
-    content.description = con.description
-
-
-    content.url = con.url
 
     content.HttpSendClientCertificates = true
     content.HttpCertificatesFile = "common:/certs/ca-bundle.crt"
@@ -89,10 +81,9 @@ sub setChannel()
     m.video.content = content
 
     m.top.backgroundURI = "pkg:/images/rsgde_bg_hd.jpg"
-    m.video.trickplaybarvisibilityauto=FALSE
+    m.video.trickplaybarvisibilityauto = false
 
     m.video.control = "play"
-
 end sub
 
 
