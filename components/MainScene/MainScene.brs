@@ -1,5 +1,5 @@
 sub init()
-    showdialog()  'Force a keyboard dialog.  
+    m.top.backgroundURI = "pkg:/images/background-controls.jpg"
 
     m.save_feed_url = m.top.FindNode("save_feed_url")  'Save url to registry
 
@@ -11,6 +11,8 @@ sub init()
 
     m.video = m.top.FindNode("Video")
     m.video.ObserveField("state", "checkState")
+
+    showdialog()  'Force a keyboard dialog.  
 End sub
 
 ' **************************************************************
@@ -41,6 +43,9 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
             m.video.width = 960
             m.video.height = 540
             result = true
+        else if(key = "options")
+            showdialog()
+            result = true
         end if
     end if
     
@@ -49,11 +54,11 @@ end function
 
 
 sub checkState()
-    state = m.Video.state
-    print "Video player state is now: " + state
-
+    state = m.video.state
     if(state = "error")
-        print "ERROR - Code " + m.Video.errorCode.ToStr() + ", Message: " + m.Video.errorMsg
+        m.top.dialog = CreateObject("roSGNode", "Dialog")
+        m.top.dialog.title = "Error: " + str(m.video.errorCode)
+        m.top.dialog.message = m.video.errorMsg
     end if
 end sub
 
@@ -117,7 +122,6 @@ sub onKeyPress()
         m.global.feedurl = url
         m.save_feed_url.control = "RUN"
         m.top.dialog.close = true
-        m.top.backgroundURI = "pkg:/images/background-controls.jpg"
         m.get_channel_list.control = "RUN"
     else if m.top.dialog.buttonSelected = 1
         m.top.dialog.text = "https://pastebin.com/raw/v0dE8SdX"
