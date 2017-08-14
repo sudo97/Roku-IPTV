@@ -101,7 +101,7 @@ sub showdialog()
     keyboarddialog.backgroundUri = "pkg:/images/rsgde_bg_hd.jpg"
     keyboarddialog.title = "Enter .m3u URL"
 
-    keyboarddialog.buttons=["OK","Set back to Demo"]
+    keyboarddialog.buttons=["OK","Set back to Demo", "Save"]
     keyboarddialog.optionsDialog=true
 
     m.top.dialog = keyboarddialog
@@ -111,7 +111,7 @@ sub showdialog()
 end sub
 
 
-function onKeyPress()
+sub onKeyPress()
     print " button is"m.top.dialog.buttonSelected
     print "m.value:::>>"m.top.dialog.text
     if m.top.dialog.buttonSelected = 0
@@ -127,28 +127,11 @@ function onKeyPress()
         m.top.dialog.close = true
         m.top.backgroundURI = "pkg:/images/background-controls.jpg"
         m.get_channel_list.control = "RUN"
-    end if
-
-
-    if m.top.dialog.buttonSelected = 1
-        url = m.top.dialog.text
-        print "THE ENTERED FEEDURL IS"; url
-
-        m.global.feedurl = "https://pastebin.com/raw/v0dE8SdX"   'Load the demo url.  Hardcoded for now.
-
-        print "THE NEW GLOBAL FEEDURL IS"; m.global.feedurl
-        m.save_feed_url.control = "RUN"
-        m.top.unobserveField("buttonSelected")
-        m.top.dialog.close = true
-        m.top.backgroundURI = "pkg:/images/background-controls.jpg"
-        m.get_channel_list.control = "RUN"
-    end if
-
-
-    if m.top.dialog.buttonSelected = 2
+    else if m.top.dialog.buttonSelected = 1
+        m.top.dialog.text = "https://pastebin.com/raw/v0dE8SdX"
+    else if m.top.dialog.buttonSelected = 2
         print "Saved for future use"
         '    m.top.dialog.visible ="false"
         '    m.top.unobserveField("buttonSelected")
-        m.top.dialog.close = true
     end if
-end Function
+end sub
