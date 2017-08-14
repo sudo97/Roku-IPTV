@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<component name="get_feed_url" extends="Task">
+	<interface>
+	</interface>
+	
+	
+<!-- BrightScript Portion -->
+<script type="text/brightscript" >
+<![CDATA[
+
+
+
+sub init()
+
+print "Entering  get_feed_url"
+
+ primaryfeed = getStrValFromReg("primaryfeed", "profile")
+ m.global.addFields( {feedurl: primaryfeed } )
+ print "GLOBAL FEEDURL FROM get_FEED_URL";m.global.feedurl
+   
+end sub
+
+' ********************************************************
+
+Function getStrValFromReg(keyname As String, section As String) As String
+    reg = CreateObject("roRegistrySection", section)
+    if reg.Exists(keyname) then
+        return reg.Read(keyname)
+ '      return "https://pastebin.com/raw/v0dE8SdX"   'skip registry and load demo for testing'
+        else
+        return "https://pastebin.com/raw/v0dE8SdX"   'demo playlist of public streams
+    endif
+    return ""
+End Function
+
+
+]]>
+</script>
+<!-- End of BrightScript Portion -->
+</component>
