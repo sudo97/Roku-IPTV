@@ -71,6 +71,8 @@ sub setChannel()
     
     'Probably would be good to make content = content.clone(true) but for now it works like this
     content.streamFormat = "hls"
+    
+    if m.video.content <> invalid and m.video.content.url = content.url return
 
     content.HttpSendClientCertificates = true
     content.HttpCertificatesFile = "common:/certs/ca-bundle.crt"
