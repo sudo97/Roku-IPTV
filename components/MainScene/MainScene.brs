@@ -102,21 +102,22 @@ sub showdialog()
 
     m.top.dialog = keyboarddialog
     m.top.dialog.text = m.global.feedurl
+    m.top.dialog.keyboard.textEditBox.cursorPosition = len(m.global.feedurl)
 
     KeyboardDialog.observeFieldScoped("buttonSelected","onKeyPress")  'we observe button ok/cancel, if so goto to onKeyPress sub
 end sub
 
 
 sub onKeyPress()
-    if m.top.dialog.buttonSelected = 0
+    if m.top.dialog.buttonSelected = 0 ' OK
         url = m.top.dialog.text
         m.global.feedurl = url
         m.save_feed_url.control = "RUN"
         m.top.dialog.close = true
         m.get_channel_list.control = "RUN"
-    else if m.top.dialog.buttonSelected = 1
+    else if m.top.dialog.buttonSelected = 1 ' Set back to Demo
         m.top.dialog.text = "https://pastebin.com/raw/v0dE8SdX"
-    else if m.top.dialog.buttonSelected = 2
+    else if m.top.dialog.buttonSelected = 2 ' Save
         m.global.feedurl = m.top.dialog.text
         m.save_feed_url.control = "RUN"
         '    m.top.dialog.visible ="false"
