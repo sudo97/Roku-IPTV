@@ -67,25 +67,33 @@ sub SetContent()
 end sub
 
 sub setChannel()
-    content = m.list.content.getChild(m.list.itemSelected)
-    
-    'Probably would be good to make content = content.clone(true) but for now it works like this
-    content.streamFormat = "hls"
-    
-    if m.video.content <> invalid and m.video.content.url = content.url return
+	if m.list.content.getChild(0).getChild(0) = invalid
+		content = m.list.content.getChild(m.list.itemSelected)
+	else
+		itemSelected = m.list.itemSelected
+		for i = 0 to m.list.currFocusSection - 1
+			itemSelected = itemSelected - m.list.content.getChild(i).getChildCount()
+		end for
+		content = m.list.content.getChild(m.list.currFocusSection).getChild(itemSelected)
+	end if
 
-    content.HttpSendClientCertificates = true
-    content.HttpCertificatesFile = "common:/certs/ca-bundle.crt"
-    m.video.EnableCookies()
-    m.video.SetCertificatesFile("common:/certs/ca-bundle.crt")
-    m.video.InitClientCertificates()
+	'Probably would be good to make content = content.clone(true) but for now it works like this
+	content.streamFormat = "hls"
 
-    m.video.content = content
+	if m.video.content <> invalid and m.video.content.url = content.url return
 
-    m.top.backgroundURI = "pkg:/images/rsgde_bg_hd.jpg"
-    m.video.trickplaybarvisibilityauto = false
+	content.HttpSendClientCertificates = true
+	content.HttpCertificatesFile = "common:/certs/ca-bundle.crt"
+	m.video.EnableCookies()
+	m.video.SetCertificatesFile("common:/certs/ca-bundle.crt")
+	m.video.InitClientCertificates()
 
-    m.video.control = "play"
+	m.video.content = content
+
+	m.top.backgroundURI = "pkg:/images/rsgde_bg_hd.jpg"
+	m.video.trickplaybarvisibilityauto = false
+
+	m.video.control = "play"
 end sub
 
 
@@ -103,6 +111,7 @@ sub showdialog()
     m.top.dialog = keyboarddialog
     m.top.dialog.text = m.global.feedurl
     m.top.dialog.keyboard.textEditBox.cursorPosition = len(m.global.feedurl)
+    m.top.dialog.keyboard.textEditBox.maxTextLength = 300
 
     KeyboardDialog.observeFieldScoped("buttonSelected","onKeyPress")  'we observe button ok/cancel, if so goto to onKeyPress sub
 end sub
