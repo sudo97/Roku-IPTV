@@ -14,7 +14,6 @@ sub getContent()
 	httpsReg = CreateObject("roRegex", "^https:", "")
 	if httpsReg.isMatch(feedurl)
 		searchRequest.SetCertificatesFile ("common:/certs/ca-bundle.crt")
-		searchRequest.AddHeader ("X-Roku-Reserved-Dev-Id", "")
 		searchRequest.InitClientCertificates ()
 	end if
 
