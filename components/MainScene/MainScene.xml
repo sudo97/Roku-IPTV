@@ -5,24 +5,24 @@
 <component name="MainScene" extends="Scene" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://rokudev.roku.com/rokudev/schema/RokuSceneGraph.xsd">
 <script type="text/brightscript" uri="pkg:/components/MainScene/MainScene.brs"/>
 <children>
-    <LabelList
-    	id="list"
-    	translation = "[100, 100]"
-    	/>
-    	
-    <Video
-    id="Video"
-    translation = "[800, 100]"
-    width = "960"
-    height= "540"/>
-    
-    <get_channel_list
-    	id="get_channel_list"
-    	control="STOP"/>
-    	
-    <save_feed_url
-    	id="save_feed_url"
-    	control="STOP"/>
-    	
+	<LabelList
+		id="list"
+		translation = "[100, 100]">
+		<Font role="font" uri="pkg:/fonts/Roboto-Regular.ttf" size="36"/>
+		<Font role="focusedFont" uri="pkg:/fonts/Roboto-Medium.ttf" size="36"/>
+		<Font role="sectionDividerFont" uri="pkg:/fonts/Roboto-Thin.ttf" size="24"/>
+	</LabelList>
+	<Video
+		id="Video"
+		translation = "[800, 100]"
+		width = "960"
+		height= "540"/>
+
+	<get_channel_list
+		id="get_channel_list"/>
+
+	<save_feed_url
+		id="save_feed_url"/>
+
 </children>
 </component>
