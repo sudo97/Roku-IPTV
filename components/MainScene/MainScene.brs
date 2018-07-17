@@ -20,9 +20,7 @@ End sub
 function onKeyEvent(key as String, press as Boolean) as Boolean
     result = false
     
-    if(press)'
-    
-    
+    if(press) '
         if(key = "right")
             m.list.SetFocus(false)
             m.top.SetFocus(true)
@@ -100,7 +98,6 @@ end sub
 sub showdialog()
     PRINT ">>>  ENTERING KEYBOARD <<<"
 
-
     keyboarddialog = createObject("roSGNode", "KeyboardDialog")
     keyboarddialog.backgroundUri = "pkg:/images/rsgde_bg_hd.jpg"
     keyboarddialog.title = "Enter .m3u URL"
@@ -129,7 +126,7 @@ sub onKeyPress()
     else if m.top.dialog.buttonSelected = 2 ' Save
         m.global.feedurl = m.top.dialog.text
         m.save_feed_url.control = "RUN"
-        '    m.top.dialog.visible ="false"
-        '    m.top.unobserveField("buttonSelected")
+        'm.top.dialog.visible ="false"
+        'm.top.unobserveField("buttonSelected")
     end if
 end sub
