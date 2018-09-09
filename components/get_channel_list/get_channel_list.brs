@@ -6,6 +6,7 @@ end sub
 
 sub getContent()
 	feedurl = m.global.feedurl
+	print feedurl
 
 	m.port = CreateObject ("roMessagePort")
 	searchRequest = CreateObject("roUrlTransfer")
@@ -24,8 +25,9 @@ sub getContent()
 	hasGroups = reHasGroups.isMatch(text)
 	print hasGroups
 
-	reLineSplit = CreateObject ("roRegex", "(?>\r\n|[\r\n])", "")
-	reExtinf = CreateObject ("roRegex", "(?i)^#EXTINF:\s*(\d+|-1|-0).*,\s*(.*)$", "")
+	reLineSplit = CreateObject("roRegex", "(?>\r\n|[\r\n])", "")
+	reExtinf = CreateObject("roRegex", "(?i)^#EXTINF:\s*(\d+|-1|-0).*,\s*(.*)$", "")
+	reLogo = CreateObject("roRegex", "tvg-logo=" + chr(34) + "(\w+:(\/?\/?)[^\s]+)" + chr(34), "")
 
 	rePath = CreateObject ("roRegex", "^([^#].*)$", "")
 	inExtinf = false
@@ -38,12 +40,16 @@ sub getContent()
 
 	REM #EXTINF:-1 tvg-logo="" group-title="uk",BBC ONE HD
 	for each line in reLineSplit.Split (text)
+		print line
 		if inExtinf
 			maPath = rePath.Match (line)
 			if maPath.Count () = 2
 				item = group.CreateChild("ContentNode")
 				item.url = maPath [1]
 				item.title = title
+
+				item.HDLISTITEMICONURL = icon
+				item.HDLISTITEMICONSELECTEDURL = icon
 
 				inExtinf = False
 			end if
@@ -72,6 +78,7 @@ sub getContent()
 			if length < 0 then length = 0
 			title = maExtinf[2]
 			inExtinf = True
+			icon = reLogo.Match()[1]
 		end if
 	end for
 
