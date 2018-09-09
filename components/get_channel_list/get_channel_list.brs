@@ -6,7 +6,6 @@ end sub
 
 sub getContent()
 	feedurl = m.global.feedurl
-	print feedurl
 
 	m.port = CreateObject ("roMessagePort")
 	searchRequest = CreateObject("roUrlTransfer")
@@ -40,7 +39,6 @@ sub getContent()
 
 	REM #EXTINF:-1 tvg-logo="" group-title="uk",BBC ONE HD
 	for each line in reLineSplit.Split (text)
-		print line
 		if inExtinf
 			maPath = rePath.Match (line)
 			if maPath.Count () = 2
