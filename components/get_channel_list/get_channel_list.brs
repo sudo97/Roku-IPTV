@@ -37,6 +37,7 @@ sub getContent()
 		groups = []
 	end if
 
+	icon = ""
 	REM #EXTINF:-1 tvg-logo="" group-title="uk",BBC ONE HD
 	for each line in reLineSplit.Split (text)
 		if inExtinf
