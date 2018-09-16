@@ -68,7 +68,7 @@ sub getContent()
 				end for
 				if group = invalid
 					group = con.CreateChild("ContentNode")
-					'group.contenttype = "SECTION"
+					group.contenttype = "SECTION"
 					group.title = groupName
 					group.id = groupName
 				end if
